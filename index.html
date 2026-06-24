@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sreekar Koduru — Data & Business Analyst</title>
+  <meta name="description" content="Sreekar Koduru — Data & Business Analyst based in Toronto, Canada. Python, SQL, Tableau, Power BI. Canadian MSc. Open to work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080C14;
+      --bg2:       #0D1421;
+      --bg3:       #111827;
+      --border:    #1E293B;
+      --border2:   #334155;
+      --accent:    #3B82F6;
+      --accent2:   #60A5FA;
+      --green:     #10B981;
+      --amber:     #F59E0B;
+      --red:       #EF4444;
+      --text1:     #F1F5F9;
+      --text2:     #94A3B8;
+      --text3:     #475569;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text1);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(8, 12, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--accent2);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text1); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--accent2); color: white !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span { color: var(--accent2); }
+
+    .hero-desc {
+      color: var(--text2);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text1);
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1px solid var(--border2);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      transform: translateY(-1px);
+    }
+
+    /* Hero right — stats card */
+    .hero-stats {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-item {}
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text2);
+      font-weight: 500;
+    }
+
+    .hero-tools {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+    }
+
+    .tools-label {
+      font-size: 0.75rem;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tool-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-family: var(--mono);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-sub {
+      color: var(--text2);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #0D1421 0%, #0F1B2D 100%);
+    }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .badge-hybrid { background: #1E3A5F; color: #60A5FA; }
+    .badge-da { background: #064E3B; color: #34D399; }
+    .badge-ba { background: #3B1F5E; color: #C084FC; }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text1);
+    }
+
+    .project-desc {
+      color: var(--text2);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-findings {
+      list-style: none;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-findings li {
+      font-size: 0.85rem;
+      color: var(--text2);
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .project-findings li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stack-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: var(--mono);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .proj-link {
+      font-size: 0.8rem;
+      color: var(--accent2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .proj-link:hover { color: white; }
+
+    .project-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .meta-stat {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      min-width: 120px;
+    }
+
+    .meta-stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .meta-stat-label {
+      font-size: 0.7rem;
+      color: var(--text3);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .skill-card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: var(--mono);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .about-text strong { color: var(--text1); }
+
+    .about-highlights {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .highlight-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .highlight-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text1);
+      margin-bottom: 0.25rem;
+    }
+
+    .highlight-desc {
+      font-size: 0.8rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-inner p {
+      color: var(--text2);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text2);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      background: var(--bg3);
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text3);
+      font-size: 0.8rem;
+      font-family: var(--mono);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── OPEN TO WORK BADGE ── */
+    .otw-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--green);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .otw-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-meta { text-align: left; display: flex; gap: 0.5rem; }
+      .contact-inner { padding: 2rem 1.5rem; }
+      section { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">sreekar.koduru</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="otw-badge">
+        <span class="otw-dot"></span>
+        Open to Work — Toronto, Canada 🇨🇦
+      </div>
+      <div class="hero-tag">Data & Business Analyst</div>
+      <h1>Turning data into<br /><span>decisions that land.</span></h1>
+      <p class="hero-desc">
+        I analyse data AND translate findings into business requirements,
+        process improvements, and recommendations stakeholders can act on.
+        Canadian MSc · 3 years experience · No sponsorship required.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Projects →</a>
+        <a href="https://www.linkedin.com/in/sreekar-koduru" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-value">3+</div>
+            <div class="stat-label">Years experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Portfolio projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">MSc</div>
+            <div class="stat-label">Canadian degree</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">102K+</div>
+            <div class="stat-label">Records analysed</div>
+          </div>
+        </div>
+        <div class="hero-tools">
+          <div class="tools-label">Core tools</div>
+          <div class="tool-tags">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">SQL</span>
+            <span class="tool-tag">Tableau</span>
+            <span class="tool-tag">Excel</span>
+            <span class="tool-tag">JIRA</span>
+            <span class="tool-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2>Three real projects.<br />Real data. Real findings.</h2>
+  <p class="section-sub">
+    Each project mirrors actual analyst work — not tutorials, not toy datasets.
+    Built to show what I can do from day one.
+  </p>
+
+  <div class="projects-grid">
+
+    <!-- Project 3 — Flagship -->
+    <div class="project-card featured">
+      <div class="project-left">
+        <span class="project-badge badge-hybrid">★ Flagship · DA + BA Hybrid</span>
+        <div class="project-title">Toronto Restaurant Risk & Compliance Analytics</div>
+        <p class="project-desc">
+          Built a complete public health intelligence system on 102,766 real
+          City of Toronto DineSafe inspection records. Engineered a custom
+          risk scoring model in Python, wrote 8 business SQL queries, built
+          a Tableau dashboard, and delivered a full BA documentation package
+          including BRD, user stories, and business recommendations.
+        </p>
+        <ul class="project-findings">
+          <li>83.7% overall compliance rate — 443 closure orders in analysis period</li>
+          <li>764 High Risk establishments identified (5% of active restaurants)</li>
+          <li>5C Maintenance violations account for 46% of all violations citywide</li>
+          <li>Kasa Moto (115 Yorkville Ave) — highest violation count: 35 in 12 months</li>
+          <li>August 2024: lowest monthly pass rate at 79.5% — seasonal risk finding</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">Tableau</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">BRD</span>
+          <span class="stack-tag">User Stories</span>
+          <span class="stack-tag">KPI Framework</span>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/views/TorontoRestaurantRiskComplianceDashboard/DineSafeDashboard" target="_blank" class="proj-link">↗ Live Dashboard</a>
+          <a href="https://github.com/Sreekar-k12/toronto-dinesafe-compliance-analytics" target="_blank" class="proj-link">↗ GitHub Repo</a>
+          <a href="https://open.toronto.ca/dataset/dinesafe/" target="_blank" class="proj-link">↗ Data Source</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="meta-stat">
+          <div class="meta-stat-value">102K</div>
+          <div class="meta-stat-label">Records</div>
+        </div>
+        <div class="meta-stat">
+          <div class="meta-stat-value">15K</div>
+          <div class="meta-stat-label">Restaurants</div>
+        </div>
+        <div class="meta-stat">
+          <div class="meta-stat-value">8</div>
+          <div class="meta-stat-label">SQL Queries</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-left">
+        <span class="project-badge badge-da">Data Analyst</span>
+        <div class="project-title">Olist E-Commerce Sales Analysis</div>
+        <p class="project-desc">
+          End-to-end analysis of 99,441 real Brazilian e-commerce orders
+          from Olist marketplace. Built Python ETL pipeline, loaded into
+          MySQL, wrote 5 business SQL queries, and published an interactive
+          Tableau dashboard.
+        </p>
+        <ul class="project-findings">
+          <li>Revenue grew 6× in 2017 — November peak of R$1.15M (Black Friday)</li>
+          <li>Health & Beauty top category at R$1.26M revenue</li>
+          <li>75% of Brazilian states experience above-average delivery times</li>
+          <li>Delivery speed is #1 satisfaction driver: 4.41★ (fast) vs 3.01★ (slow)</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">Tableau</span>
+          <span class="stack-tag">Matplotlib</span>
+          <span class="stack-tag">Seaborn</span>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/views/OlistE-CommerceAnalysisSreekarKoduru/Dashboard1" target="_blank" class="proj-link">↗ Live Dashboard</a>
+          <a href="https://github.com/Sreekar-k12/olist-ecommerce-analysis" target="_blank" class="proj-link">↗ GitHub Repo</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="meta-stat">
+          <div class="meta-stat-value">99K</div>
+          <div class="meta-stat-label">Orders</div>
+        </div>
+        <div class="meta-stat">
+          <div class="meta-stat-value">5</div>
+          <div class="meta-stat-label">SQL Queries</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-left">
+        <span class="project-badge badge-ba">Business Analyst</span>
+        <div class="project-title">CRM Lead Alert System — BA Deliverable Package</div>
+        <p class="project-desc">
+          Complete Business Analyst deliverable package for an automated
+          CRM lead inactivity alert feature at a fictional Canadian retail
+          company. Produced the full BA artifact suite from problem statement
+          to UAT plan — ready for developer handoff.
+        </p>
+        <ul class="project-findings">
+          <li>Quantified business problem: $2.6M annual revenue at risk from cold leads</li>
+          <li>8 user stories with Gherkin acceptance criteria (Given/When/Then)</li>
+          <li>As-Is and To-Be swimlane process flows in Lucidchart</li>
+          <li>Gap analysis with MoSCoW prioritisation framework</li>
+          <li>UAT plan with 7 test cases, defect classification, sign-off criteria</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">BRD</span>
+          <span class="stack-tag">User Stories</span>
+          <span class="stack-tag">Gherkin</span>
+          <span class="stack-tag">Lucidchart</span>
+          <span class="stack-tag">MoSCoW</span>
+          <span class="stack-tag">UAT</span>
+          <span class="stack-tag">PIPEDA</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Sreekar-k12/crm-lead-alert-ba-project" target="_blank" class="proj-link">↗ GitHub Repo</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="meta-stat">
+          <div class="meta-stat-value">6</div>
+          <div class="meta-stat-label">BA Documents</div>
+        </div>
+        <div class="meta-stat">
+          <div class="meta-stat-value">8</div>
+          <div class="meta-stat-label">User Stories</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2>Both sides of the analyst role.</h2>
+  <p class="section-sub">
+    Most analysts do one or the other. I do both — and the overlap
+    is where the most valuable work happens.
+  </p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">📊 Data Analysis</div>
+      <div class="skill-items">
+        <span class="skill-item">Python</span>
+        <span class="skill-item">Pandas</span>
+        <span class="skill-item">NumPy</span>
+        <span class="skill-item">SQL</span>
+        <span class="skill-item">MySQL</span>
+        <span class="skill-item">Tableau</span>
+        <span class="skill-item">Excel</span>
+        <span class="skill-item">Matplotlib</span>
+        <span class="skill-item">ETL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">📋 Business Analysis</div>
+      <div class="skill-items">
+        <span class="skill-item">BRD</span>
+        <span class="skill-item">User Stories</span>
+        <span class="skill-item">JIRA</span>
+        <span class="skill-item">Confluence</span>
+        <span class="skill-item">Agile/Scrum</span>
+        <span class="skill-item">Process Mapping</span>
+        <span class="skill-item">Gap Analysis</span>
+        <span class="skill-item">UAT</span>
+        <span class="skill-item">MoSCoW</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">🔀 Hybrid Strengths</div>
+      <div class="skill-items">
+        <span class="skill-item">KPI Frameworks</span>
+        <span class="skill-item">Data Dictionaries</span>
+        <span class="skill-item">Risk Modelling</span>
+        <span class="skill-item">Stakeholder Mgmt</span>
+        <span class="skill-item">Requirements Validation</span>
+        <span class="skill-item">Executive Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">🛠️ Tools & Environment</div>
+      <div class="skill-items">
+        <span class="skill-item">VS Code</span>
+        <span class="skill-item">Jupyter</span>
+        <span class="skill-item">Git / GitHub</span>
+        <span class="skill-item">MySQL Workbench</span>
+        <span class="skill-item">Lucidchart</span>
+        <span class="skill-item">Power BI</span>
+        <span class="skill-item">Google Workspace</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Background</div>
+  <h2>Why I do both.</h2>
+  <p class="section-sub">
+    Most companies need someone who can pull the numbers AND know what
+    to do with them. That's the role I've built toward.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a <strong>Data & Business Analyst</strong> with nearly 3 years
+        of professional experience across data analysis and business analysis
+        roles, primarily at <strong>Cognizant Technology Solutions</strong>.
+        I hold a <strong>Master of Science degree from Bishop's University,
+        Canada</strong> — which means I understand Canadian business culture
+        and workplace expectations from day one.
+      </p>
+      <p>
+        My work at Cognizant covered the full analyst spectrum: writing
+        complex SQL queries and PL/SQL procedures, building Python data
+        pipelines, gathering requirements from business stakeholders,
+        documenting BRDs, and working within SDLC best practices. I
+        engineered a performance optimisation solution that improved
+        application efficiency by 40%.
+      </p>
+      <p>
+        I hold a <strong>PGWP (Post-Graduate Work Permit)</strong> —
+        no sponsorship required. I'm actively seeking Data Analyst,
+        Business Analyst, or hybrid DA/BA roles across Canada.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <span class="highlight-icon">🎓</span>
+        <div>
+          <div class="highlight-title">Canadian Master's Degree</div>
+          <div class="highlight-desc">MSc from Bishop's University, Canada. No cultural adjustment period — ready from day one.</div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🇨🇦</span>
+        <div>
+          <div class="highlight-title">PGWP — No Sponsorship Required</div>
+          <div class="highlight-desc">Post-Graduate Work Permit holder. Full work authorisation across Canada.</div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">💼</span>
+        <div>
+          <div class="highlight-title">3 Years Professional Experience</div>
+          <div class="highlight-desc">Cognizant Technology Solutions — SQL, Python, PL/SQL, stakeholder management, SDLC.</div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🔀</span>
+        <div>
+          <div class="highlight-title">Genuine DA + BA Hybrid</div>
+          <div class="highlight-desc">I use data to validate business requirements — and business context to ask better analytical questions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center">Get in touch</div>
+    <h2>Let's talk about your team's data needs.</h2>
+    <p>
+      Open to Data Analyst, Business Analyst, and hybrid DA/BA roles
+      across Canada — Toronto, Vancouver, Ottawa, or remote.
+      Contracts and full-time both considered.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/sreekar-koduru" target="_blank" class="contact-link">
+        💼 LinkedIn
+      </a>
+      <a href="https://github.com/Sreekar-k12" target="_blank" class="contact-link">
+        💻 GitHub
+      </a>
+      <a href="https://public.tableau.com/app/profile/sreekar.koduru/vizzes" target="_blank" class="contact-link">
+        📊 Tableau Public
+      </a>
+      <a href="mailto:kodurusreekar@outlook.com" class="contact-link">
+        ✉️ Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>sreekarkoduru.com · Built with HTML & CSS · Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
